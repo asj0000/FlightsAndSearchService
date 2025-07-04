@@ -1,9 +1,9 @@
 const { CityService } = require("../services/index");
 const cityServiceObj = new CityService();
 
-const create = ( req, res) =>{
+const create = async( req, res) =>{
     try{
-        const city = cityServiceObj.createCity(req.body); 
+        const city =  await cityServiceObj.createCity(req.body); 
         return res.status(201).json({
           data: city,
           success: true,

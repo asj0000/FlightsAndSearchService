@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 dotenv.config();
 
 const { PORT } = require('../src/config/serverConfig');
+const ApiRoutes = require('./routes/index');
 
 const setupAndStartServer = ()=>{
     // object of express
@@ -11,6 +12,8 @@ const setupAndStartServer = ()=>{
     
     app.use( bodyParser.json());
     app.use( bodyParser.urlencoded({ extended :  true }));
+
+    app.use('/api', ApiRoutes);
 
     app.listen( PORT , ()=>{
         console.log(`server is running on ${PORT} port`)
