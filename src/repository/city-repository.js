@@ -31,10 +31,11 @@ class CityRepostory {
 
   }
 
-  async getCity({cityId }){
+  async getCity(cityId){
     try{
       const city = await City.findByPk( cityId) ;
-      console.log( "City is - ", city);
+      console.log( "City is - ", city, " CityId is - ", cityId);
+      return city ;
     }catch( error ){
       console.log("Error in Getting City -- ");
       throw { error };

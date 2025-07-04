@@ -37,6 +37,7 @@ class CityService {
   async getCity(cityId){
     try {
       const city = await this.cityRepository.getCity( cityId );
+      console.log("City fetched from Repo Layer -- ", city);
       return city;
     } catch (error) {
       console.log("Error in getting City Service Layer -- ", error);
