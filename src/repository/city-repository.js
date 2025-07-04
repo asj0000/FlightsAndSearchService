@@ -44,14 +44,20 @@ class CityRepostory {
 
   async updateCity( cityId , data){
     try{
-      const cityObj = await City.update( data , {
-        where:{
-          id : cityId
-        }
-      });
+      // The below approach will not return the updated object
+      // if working with PostgresSQL use return TRUE approach , else do not use
+      // const cityObj = await City.update( data , {
+      //   where:{
+      //     id : cityId
+      //   }
+      // });
 
-      console.log( "Updated Onject  --", cityObj);
-      return cityObj ; 
+      // The below approach will return the updated object
+      const city = await City.findByPk(cityId);
+      city.name = data.name;
+      await city.save();
+      return city; 
+
     }catch(error){
       console.log("Error in Updating City -- ");
       throw { error };
