@@ -42,6 +42,17 @@ class CityRepostory {
     }
   }
 
+  async getAllCities(){
+    try{
+      const cities = await City.findAll() ;
+      console.log( "City is - ", cities);
+      return cities ;
+    }catch( error ){
+      console.log("Error in fetching Cities -- ");
+      throw { error };
+    }
+  }
+
   async updateCity( cityId , data){
     try{
       // The below approach will not return the updated object
