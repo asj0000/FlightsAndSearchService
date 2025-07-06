@@ -46,3 +46,7 @@
 ### Airport -> id, name, address, city_id, created_at, updated_at
 
     Relationship -> City has many airports and Airports belong to         (one to many )
+
+```
+npx seuquelize model: generate --name Airport --attributes name:String,address:String,cityId:integer
+```

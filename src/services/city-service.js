@@ -15,6 +15,16 @@ class CityService {
     }
   }
 
+  async createCities(data){
+    try {
+      const cities = await this.cityRepository.createCities( data );
+      return cities;
+    } catch (error) {
+      console.log("Error in Creating City in Bulk Service Layer -- ", error);
+      throw { error };
+    }
+  }
+
   async updateCity(cityId ,  data){
     try{
       const cityObj = await this.cityRepository.updateCity( cityId , data );

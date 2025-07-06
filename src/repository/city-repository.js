@@ -15,6 +15,18 @@ class CityRepostory {
     }
 
   }
+  // Method to create multiple cities , BulkInsert or BulkCreate
+  async createCities( cities){
+    try{
+      const result = await City.bulkCreate(cities);
+      console.log("Cities Created Successfully - ", result);
+      return result;
+    }catch(error){
+      console.log("Error in Creating City in Bulk ");
+      throw{error};
+    }
+
+  }
 
   // METHOD to delete a city form the table
   async deleteCity( cityId ){

@@ -3,6 +3,7 @@ const dotenv = require( 'dotenv')
 const bodyParser = require('body-parser');
 dotenv.config();
 
+const db = require('./models/index');
 const { PORT } = require('../src/config/serverConfig');
 const ApiRoutes = require('./routes/index');
 
@@ -18,7 +19,9 @@ const setupAndStartServer = ()=>{
     app.listen( PORT , ()=>{
         console.log(`server is running on ${PORT} port`)
         console.log(process.env.PORT )
-        
+        if( process.env.SYNC_DB){
+            db.sequelize.sync({alter : true})        
+        }
     })
 }
 

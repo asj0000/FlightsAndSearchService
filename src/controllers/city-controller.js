@@ -22,6 +22,27 @@ const create = async( req, res) =>{
 
 }
 
+const bulkCreate = async(req, res)=>{
+  const cities = req.body.data;
+  try{
+      const result =  await cityServiceObj.createCities(cities); 
+      return res.status(201).json({
+        data: result,
+        success: true,
+        message: "Successfully created cities in bulk",
+        err: {}
+      });
+  }catch(error){
+      console.log(error);
+      return res.status(500).json({
+        data:{},
+        success: false,
+        message: "Something went wrong while creating cities in bulk",
+        err: error
+      })
+  }
+}
+
 const destroy = async( req, res) =>{
     try{
         const response = await cityServiceObj.deleteCity(req.params.id); 
@@ -110,6 +131,7 @@ const update = async( req, res) =>{
 
 module.exports = {
   create,
+  bulkCreate,
   destroy,
   get,
   getAll,
