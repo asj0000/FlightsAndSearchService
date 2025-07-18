@@ -2,4 +2,5 @@
 // which we want to export to other files
 module.exports = {
   CityRepository : require('./city-repository'),
+  AirportRepository: require('./airport-repository')
 }
