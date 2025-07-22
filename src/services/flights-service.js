@@ -23,6 +23,18 @@ class FlightsService{
     }
 
   } 
+
+  async getAllFilghtData( data ){
+    try{
+        const flights = await this.flightRepostiory.getAllFlights(data);
+        return flights;
+
+    }catch( error ){
+        console.log(" Something wrong in flights service layer");
+        throw { error};
+    }
+
+  }
 }
 
 module.exports =  FlightsService; 
