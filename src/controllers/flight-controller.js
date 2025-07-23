@@ -4,8 +4,16 @@ const flightsService = new FlightsService();
 
 const create =  async( req , res )=> {
   try{
-    console.log("Flight data in controller - ", req.body);
-    const flight = await flightsService.createFlight( req.body );
+    const flightBodyData = {
+      flightNumber : req.body.flightNumber,
+      airplaneId: req.body.airplaneId,
+      departureAirportId: req.body.departureAirportId,
+      arrivalAirportId: req.body.arrivalAirportId,
+      departureTime: req.body.departureTime,
+      arrivalTime: req.body.arrivalTime,
+      price: req.body.price
+    }
+    const flight = await flightsService.createFlight( flightBodyData );
     return res.status(201).json({
       data: flight,
       success: true,
